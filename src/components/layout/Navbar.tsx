@@ -1,13 +1,12 @@
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Menu, X, Instagram, Phone, Globe } from 'lucide-react';
+import { Menu, X, Instagram, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
 import { Logo } from '../ui/Logo';
-import { useTranslation } from 'react-i18next';
+import { Link, NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
-  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,17 +16,12 @@ export const Navbar = () => {
     return () => unsub();
   }, [scrollY]);
 
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'fr' : 'en';
-    i18n.changeLanguage(newLang);
-  };
-
   const navLinks = [
-    { name: t('nav.services'), href: '#services' },
-    { name: t('nav.gallery'), href: '#gallery' },
-    { name: t('nav.team'), href: '#team' },
-    { name: t('nav.about'), href: '#about' },
-    { name: t('nav.contact'), href: '#contact' },
+    { name: 'Services', to: '/services' },
+    { name: 'Gallery', to: '/gallery' },
+    { name: 'Team', to: '/team' },
+    { name: 'About', to: '/about' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
@@ -46,32 +40,32 @@ export const Navbar = () => {
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-12">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.name}
-              href={link.href}
-              className="text-[11px] font-medium tracking-[0.2em] uppercase hover:text-gold transition-colors"
+              to={link.to}
+              className={({ isActive }) => cn(
+                "text-[11px] font-medium tracking-[0.2em] uppercase transition-colors hover:text-gold",
+                isActive ? "text-gold font-semibold" : isScrolled ? "text-luxury-black" : "text-white"
+              )}
             >
               {link.name}
-            </a>
+            </NavLink>
           ))}
-          
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-gold hover:text-luxury-black transition-colors"
-          >
-            <Globe size={14} />
-            <span>{i18n.language === 'en' ? 'FR' : 'EN'}</span>
-          </button>
 
-          <Button variant="outline" size="sm" className="ml-4 border-gold text-gold hover:bg-gold hover:text-white">
-            {t('nav.book')}
-          </Button>
+          <Link to="/book">
+            <Button variant="outline" size="sm" className="ml-4 border-gold text-gold hover:bg-gold hover:text-white">
+              Book Now
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-luxury-black focus:outline-none"
+          className={cn(
+            "lg:hidden p-2 focus:outline-none transition-colors",
+            isScrolled ? "text-luxury-black" : "text-white"
+          )}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -85,29 +79,24 @@ export const Navbar = () => {
       >
         <div className="flex flex-col items-center justify-center h-full space-y-8 pb-24">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.to}
               onClick={() => setIsOpen(false)}
-              className="text-lg font-serif tracking-[0.2em] uppercase hover:text-gold transition-colors"
+              className="text-lg font-serif tracking-[0.2em] uppercase hover:text-gold transition-colors text-luxury-black"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center space-x-3 text-sm font-bold uppercase tracking-[0.3em] text-gold"
-          >
-            <Globe size={18} />
-            <span>{i18n.language === 'en' ? 'French Edition' : 'Version Anglaise'}</span>
-          </button>
           <div className="flex space-x-6 pt-4">
             <Instagram size={20} className="text-gold" />
             <Phone size={20} className="text-gold" />
           </div>
-          <Button variant="secondary" size="lg" onClick={() => setIsOpen(false)}>
-            {t('nav.book')}
-          </Button>
+          <Link to="/book" onClick={() => setIsOpen(false)}>
+            <Button variant="secondary" size="lg">
+              Book Now
+            </Button>
+          </Link>
         </div>
       </motion.div>
     </motion.nav>

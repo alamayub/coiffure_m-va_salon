@@ -1,10 +1,8 @@
 import { Instagram, Facebook, Phone, MapPin, Mail } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { Logo } from '../ui/Logo';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
-  const { t } = useTranslation();
-
   return (
     <footer className="bg-luxury-black text-white pt-20 pb-10 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -12,7 +10,7 @@ export const Footer = () => {
         <div className="flex flex-col space-y-6">
           <Logo light iconSize={20} className="!items-start" />
           <p className="text-warm-gray/60 text-sm leading-relaxed max-w-xs font-light">
-            {t('footer.description')}
+            Luxury hair salon in the heart of Luxembourg City. We redefine beauty through expertise and elegance.
           </p>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-gold transition-colors"><Instagram size={20} /></a>
@@ -22,19 +20,19 @@ export const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-serif text-lg tracking-wider mb-8">{t('footer.nav')}</h4>
+          <h4 className="font-serif text-lg tracking-wider mb-8">Navigation</h4>
           <ul className="space-y-4 text-sm font-light text-warm-gray/60">
-            <li><a href="#services" className="hover:text-white transition-colors">{t('nav.services')}</a></li>
-            <li><a href="#gallery" className="hover:text-white transition-colors">{t('nav.gallery')}</a></li>
-            <li><a href="#team" className="hover:text-white transition-colors">{t('nav.team')}</a></li>
-            <li><a href="#about" className="hover:text-white transition-colors">{t('nav.about')}</a></li>
-            <li><a href="#contact" className="hover:text-white transition-colors">{t('nav.book')}</a></li>
+            <li><Link to="/services" className="hover:text-white transition-colors">Services</Link></li>
+            <li><Link to="/gallery" className="hover:text-white transition-colors">Gallery</Link></li>
+            <li><Link to="/team" className="hover:text-white transition-colors">Team</Link></li>
+            <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
+            <li><Link to="/contact" className="hover:text-white transition-colors">Book Now</Link></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
-          <h4 className="font-serif text-lg tracking-wider mb-8">{t('footer.visit')}</h4>
+          <h4 className="font-serif text-lg tracking-wider mb-8">Visit Us</h4>
           <ul className="space-y-4 text-sm font-light text-warm-gray/60">
             <li className="flex items-start space-x-3">
               <MapPin size={18} className="text-gold shrink-0" />
@@ -53,7 +51,7 @@ export const Footer = () => {
 
         {/* Hours */}
         <div>
-          <h4 className="font-serif text-lg tracking-wider mb-8">{t('footer.hours')}</h4>
+          <h4 className="font-serif text-lg tracking-wider mb-8">Opening Hours</h4>
           <ul className="space-y-3 text-sm font-light text-warm-gray/60">
             <li className="flex justify-between border-b border-white/5 pb-2">
               <span>Mon — Fri</span>
@@ -65,7 +63,7 @@ export const Footer = () => {
             </li>
             <li className="flex justify-between">
               <span>Sun</span>
-              <span className="text-gold">{t('footer.closed')}</span>
+              <span className="text-gold">Closed</span>
             </li>
           </ul>
         </div>

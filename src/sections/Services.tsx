@@ -1,44 +1,41 @@
 import { motion } from 'motion/react';
 import { Scissors, Sparkles, Heart, Crown, Camera, Coffee, Zap, Palette } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useTranslation } from 'react-i18next';
 
 export const Services = () => {
-  const { t, i18n } = useTranslation();
-
   const services = [
     {
-      title: t('services.cut'),
+      title: 'Haircut & Sculpting',
       description: 'Precision cuts tailored to your face shape and lifestyle.',
       icon: Scissors,
       price: 'From 85€',
     },
     {
-      title: t('services.color'),
+      title: 'Balayage & Color',
       description: 'Bespoke hand-painted highlights for a sun-kissed finish.',
       icon: Palette,
       price: 'From 180€',
     },
     {
-      title: t('services.bridal'),
+      title: 'Bridal Artistry',
       description: 'Exquisite styling for your most unforgettable moments.',
       icon: Crown,
       price: 'Consultation Required',
     },
     {
-      title: t('services.treatment'),
+      title: 'Hair Treatment',
       description: 'Deep hydration and keratin therapy for ultimate shine.',
       icon: Sparkles,
       price: 'From 60€',
     },
     {
-      title: t('services.style'),
-      description: t('services.style') + ' ' + (i18n.language === 'en' ? 'Professional red-carpet styling.' : 'Coiffage professionnel tapis rouge.'),
+      title: 'Blow Dry & Style',
+      description: 'Professional red-carpet styling.',
       icon: Zap,
       price: 'From 45€',
     },
     {
-      title: t('services.consult'),
+      title: 'Consultation',
       description: 'Expert analysis and professional styling roadmap.',
       icon: Camera,
       price: 'Complimentary',
@@ -49,7 +46,7 @@ export const Services = () => {
     <section id="services" className="py-24 md:py-32 bg-white relative overflow-hidden">
       {/* Decorative background text */}
       <div className="absolute top-20 -right-20 text-[200px] font-serif font-black opacity-[0.02] rotate-90 select-none pointer-events-none uppercase">
-        {t('services.tagline')}
+        The Collection
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -59,7 +56,7 @@ export const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-gold text-xs font-semibold tracking-[0.5em] uppercase mb-4 block"
           >
-            {t('services.tagline')}
+            The Collection
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -67,7 +64,7 @@ export const Services = () => {
             transition={{ delay: 0.1 }}
             className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8"
           >
-            {t('services.title')}
+            Bespoke Treatments
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +72,7 @@ export const Services = () => {
             transition={{ delay: 0.2 }}
             className="text-luxury-black/60 font-light leading-relaxed"
           >
-            {t('services.subtitle')}
+            Our service menu is a carefully curated selection of premium hair treatments.
           </motion.p>
         </div>
 
@@ -102,7 +99,7 @@ export const Services = () => {
               </p>
               
               <div className="flex items-center justify-between pt-6 border-t border-luxury-black/5">
-                <span className="text-[10px] uppercase tracking-widest font-semibold text-luxury-black/40">{t('services.investment')}</span>
+                <span className="text-[10px] uppercase tracking-widest font-semibold text-luxury-black/40">Investment</span>
                 <span className="text-sm font-serif italic text-gold">{service.price}</span>
               </div>
 
@@ -115,7 +112,7 @@ export const Services = () => {
         <div className="mt-24 text-center">
             <div className="relative inline-block py-12 px-24 border border-gold/20">
                 <blockquote className="font-serif text-2xl italic font-light tracking-wide max-w-xl mx-auto">
-                    "{t('services.quote')}"
+                    "Luxury is not a luxury, it's a way of being."
                 </blockquote>
                 <div className="absolute top-0 left-12 -translate-y-1/2 bg-white px-4">
                     <Heart className="text-gold fill-gold" size={20} />

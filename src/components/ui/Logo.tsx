@@ -1,5 +1,6 @@
 import { Sparkles } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { Link } from 'react-router-dom';
 
 interface LogoProps {
   className?: string;
@@ -17,7 +18,7 @@ export const Logo = ({
   light = false 
 }: LogoProps) => {
   return (
-    <a href="/" className={cn("group flex flex-col items-center", className)}>
+    <Link to="/" className={cn("group flex flex-col items-center", className)}>
       <div className="flex items-center space-x-2">
         <div className={cn(
           "relative flex items-center justify-center w-8 h-8 md:w-10 md:h-10 border border-gold/30 rounded-full group-hover:bg-gold transition-all duration-500",
@@ -47,6 +48,6 @@ export const Logo = ({
           </span>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };

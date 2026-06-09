@@ -1,9 +1,6 @@
 import { motion } from 'motion/react';
-import { useTranslation } from 'react-i18next';
 
 export const About = () => {
-  const { t } = useTranslation();
-
   return (
     <section id="about" className="py-24 md:py-32 bg-beige overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -50,32 +47,37 @@ export const About = () => {
             className="flex flex-col space-y-8"
           >
             <div className="space-y-4">
-              <span className="text-gold text-xs font-semibold tracking-[0.4em] uppercase block">{t('about.tagline')}</span>
+              <span className="text-gold text-xs font-semibold tracking-[0.4em] uppercase block">Our Philosophy</span>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
-                {t('about.title').split(' ').map((word, i, arr) => i === arr.length - 1 ? <><br/><span key={i} className="italic font-light">{word}</span></> : word + ' ')}
+                Where Art Meets <br />
+                <span className="italic font-light">Elegance</span>
               </h2>
             </div>
             
             <div className="space-y-6 text-luxury-black/70 font-light leading-relaxed tracking-wide text-base md:text-lg">
-              <p>{t('about.p1')}</p>
-              <p>{t('about.p2')}</p>
+              <p>
+                Founded in the heart of Luxembourg's Ville-Haute, Coiffure Méva was born from a vision to bring a new level of sophisticated hair artistry to the city.
+              </p>
+              <p>
+                Our stylists are more than just technicians; they are artists trained in the most advanced European techniques.
+              </p>
             </div>
 
             <div className="flex items-center space-x-12 pt-4">
               <div>
                 <span className="block font-serif text-3xl text-gold">15+</span>
-                <span className="text-[10px] uppercase tracking-widest text-luxury-black/50">{t('about.stat1')}</span>
+                <span className="text-[10px] uppercase tracking-widest text-luxury-black/50">Years Experience</span>
               </div>
               <div className="w-[1px] h-12 bg-gold/20" />
               <div>
                 <span className="block font-serif text-3xl text-gold">5.0</span>
-                <span className="text-[10px] uppercase tracking-widest text-luxury-black/50">{t('about.stat2')}</span>
+                <span className="text-[10px] uppercase tracking-widest text-luxury-black/50">Client Rating</span>
               </div>
             </div>
 
             <div className="pt-6">
               <a href="#services" className="inline-flex items-center group space-x-3 text-xs font-semibold tracking-[0.3em] uppercase">
-                <span>{t('about.link')}</span>
+                <span>The Experience</span>
                 <div className="w-12 h-[1px] bg-gold group-hover:w-20 transition-all duration-500" />
               </a>
             </div>
